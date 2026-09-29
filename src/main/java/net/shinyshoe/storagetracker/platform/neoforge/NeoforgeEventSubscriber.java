@@ -2,14 +2,21 @@ package net.shinyshoe.storagetracker.platform.neoforge;
 
 //? neoforge {
 
-/*import net.shinyshoe.storagetracker.event.ExampleEventHandler; // sample_content
+/*import net.shinyshoe.storagetracker.command.ModCommands;
+import net.shinyshoe.storagetracker.event.ExampleEventHandler; // sample_content
 import net.minecraft.server.level.ServerPlayer; // sample_content
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 @EventBusSubscriber
 public class NeoforgeEventSubscriber {
+
+	@SubscribeEvent
+	public static void onRegisterCommands(RegisterCommandsEvent event) {
+		ModCommands.register(event.getDispatcher());
+	}
 
 	@SubscribeEvent // sample_content
 	public static void onPlayerDamage(LivingDamageEvent.Post event) { // sample_content
