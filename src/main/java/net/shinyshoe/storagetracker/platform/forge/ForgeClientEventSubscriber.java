@@ -3,17 +3,25 @@ package net.shinyshoe.storagetracker.platform.forge;
 //? forge {
 
 /*import net.shinyshoe.storagetracker.StorageTracker;
+import net.shinyshoe.storagetracker.client.ModKeyMappings;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@Mod.EventBusSubscriber(modid = StorageTracker.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = StorageTracker.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ForgeClientEventSubscriber {
 
 	@SubscribeEvent
 	public static void onClientSetup(final FMLClientSetupEvent event) {
 		StorageTracker.onInitializeClient();
+	}
+
+	@SubscribeEvent
+	public static void onRegisterKeyMappings(final RegisterKeyMappingsEvent event) {
+		event.register(ModKeyMappings.OPEN_SEARCH);
+		event.register(ModKeyMappings.QUICK_SEARCH);
 	}
 }
 *///?}

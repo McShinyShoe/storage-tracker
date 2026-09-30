@@ -1,0 +1,29 @@
+{
+  "key.categories.storagetracker": "Storage Tracker",
+  "key.category.storagetracker.open_search_category": "Storage Tracker",
+  "key.storage-tracker.open_search": "Open storage search",
+  "key.storage-tracker.quick_search": "Quick-search hovered item",
+
+  "message.storage-tracker.gui_unavailable": "Storage Tracker's search screen isn't available on this Minecraft version yet, but tracking still works.",
+  "message.storage-tracker.locate": "It's in %s at [%s, %s, %s]",
+  "message.storage-tracker.quick_search.not_found": "No tracked container in this dimension has %s",
+  "message.storage-tracker.quick_search.found": "Highlighting %s in %s container(s)",
+
+  "gui.storage-tracker.search.title": "Storage Search",
+  "gui.storage-tracker.search.box": "Search items",
+  "gui.storage-tracker.sort.name": "Name",
+  "gui.storage-tracker.sort.count": "Count",
+  "gui.storage-tracker.sort.nearest": "Nearest",
+  "gui.storage-tracker.sort_label": "Sort: %s %s",
+  "gui.storage-tracker.dimension.current": "This dimension",
+  "gui.storage-tracker.dimension.all": "All dimensions",
+  "gui.storage-tracker.type_filter.all": "All types",
+  "gui.storage-tracker.type_filter.chests": "Chests",
+  "gui.storage-tracker.type_filter.barrels": "Barrels",
+  "gui.storage-tracker.type_filter.furnaces": "Furnaces",
+  "gui.storage-tracker.type_filter.other": "Other",
+  "gui.storage-tracker.detail.none": "Select an item to see where it is",
+  "gui.storage-tracker.detail.summary": "%s total across %s container(s)",
+  "gui.storage-tracker.detail.everywhere": "Available anywhere (ender chest)",
+  "gui.storage-tracker.status": "%s items tracked in %s containers"
+}

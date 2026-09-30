@@ -12,6 +12,7 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		StorageTracker.onInitializeClient();
+		FabricClientEventSubscriber.registerEvents();
 	}
 
 }

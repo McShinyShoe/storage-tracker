@@ -1,5 +1,7 @@
 package net.shinyshoe.storagetracker;
 
+import net.shinyshoe.storagetracker.config.ModConfig;
+import net.shinyshoe.storagetracker.config.ModConfigManager;
 import net.shinyshoe.storagetracker.platform.Platform;
 import net.shinyshoe.storagetracker.storage.StorageDatabase;
 
@@ -37,6 +39,8 @@ public class StorageTracker {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, StorageTracker.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 
+		ModConfigManager.load();
+
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> database().saveNow(), "StorageTracker-ShutdownSave"));
 	}
 
@@ -49,12 +53,10 @@ public class StorageTracker {
 		return database;
 	}
 
-	/**
-	 * Registry access for encoding/decoding item data components, erased to {@code Object} since
-	 * the underlying type ({@code HolderLookup.Provider}) doesn't exist prior to 1.20.
-	 * See {@link net.shinyshoe.storagetracker.util.ItemStackIOUtil}. Null if no level is loaded
-	 * (or, on 1.19.2, always - it predates data components and never needs this).
-	 */
+	public static ModConfig config() {
+		return ModConfigManager.current();
+	}
+
 	public static Object clientRegistries() {
 		//? if > 1.19.2 {
 		Minecraft client = Minecraft.getInstance();

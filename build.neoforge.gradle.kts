@@ -13,6 +13,11 @@ stonecutter {
 	}
 }
 
+// exclude 26.1.2 or above rewrite how gui rendering works, maybe later we can have gui for 26.1.2+
+if (sc.current.parsed >= "26.1.2") {
+	sourceSets["main"].java.exclude("net/shinyshoe/storagetracker/client/gui/**")
+}
+
 platform {
 	loader = "neoforge"
 	dependencies {
