@@ -1,7 +1,14 @@
 package net.shinyshoe.storagetracker.storage;
 
+import com.mojang.serialization.Codec;
 import net.shinyshoe.storagetracker.StorageTracker;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum StorageType {
 
@@ -26,6 +33,11 @@ public enum StorageType {
 	JUKEBOX("minecraft", "jukebox"),
 	SHELF("minecraft", "shelf");
 
+	public static final Codec<StorageType> CODEC = Codec.STRING.xmap(StorageType::valueOf, StorageType::name);
+
+	private static final Map<ResourceLocation, StorageType> BY_ID = Arrays.stream(values())
+		.collect(Collectors.toMap(StorageType::getId, Function.identity()));
+
 	private final ResourceLocation id;
 
 	StorageType(String namespace, String path) {
@@ -34,5 +46,10 @@ public enum StorageType {
 
 	public ResourceLocation getId() {
 		return id;
+	}
+
+	/** Looks up which tracked storage type (if any) a block's registry id corresponds to. */
+	public static Optional<StorageType> byId(ResourceLocation id) {
+		return Optional.ofNullable(BY_ID.get(id));
 	}
 }

@@ -1,7 +1,9 @@
 package net.shinyshoe.storagetracker;
 
 import net.shinyshoe.storagetracker.platform.Platform;
+import net.shinyshoe.storagetracker.storage.StorageDatabase;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,8 @@ public class StorageTracker {
 
 	private static final Platform PLATFORM = createPlatformInstance();
 
+	private static StorageDatabase database;
+
 	public static void onInitialize() {
 		LOGGER.info("Initializing {} on {}", MOD_ID, StorageTracker.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
@@ -32,10 +36,32 @@ public class StorageTracker {
 	public static void onInitializeClient() {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, StorageTracker.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
+
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> database().saveNow(), "StorageTracker-ShutdownSave"));
 	}
 
 	public static Platform xplat() {
 		return PLATFORM;
+	}
+
+	public static StorageDatabase database() {
+		if (database == null) database = new StorageDatabase();
+		return database;
+	}
+
+	/**
+	 * Registry access for encoding/decoding item data components, erased to {@code Object} since
+	 * the underlying type ({@code HolderLookup.Provider}) doesn't exist prior to 1.20.
+	 * See {@link net.shinyshoe.storagetracker.util.ItemStackIOUtil}. Null if no level is loaded
+	 * (or, on 1.19.2, always - it predates data components and never needs this).
+	 */
+	public static Object clientRegistries() {
+		//? if > 1.19.2 {
+		Minecraft client = Minecraft.getInstance();
+		return client.level != null ? client.level.registryAccess() : null;
+		//?} else {
+		/*return null;
+		*///?}
 	}
 
 	private static Platform createPlatformInstance() {
