@@ -1,7 +1,7 @@
 loomx.loom_version = "1.18-SNAPSHOT"
 
 [mod]
-id = "storage-tracker"
+id = "storagetracker"
 name = "Storage Tracker"
 group = "net.shinyshoe"
 version = "0.1.0"
