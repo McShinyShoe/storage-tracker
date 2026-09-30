@@ -51,6 +51,16 @@ deps.minecraft = "1.19.2"
 deps.fabric-api = "0.77.0+1.19.2"
 deps.modmenu = "4.2.0-beta.2"
 
+[fabric."1.20.2"]
+deps.minecraft = "1.20.2"
+deps.fabric-api = "0.91.6+1.20.2"
+deps.modmenu = "8.0.1"
+
+[fabric."1.20.4"]
+deps.minecraft = "1.20.4"
+deps.fabric-api = "0.97.3+1.20.4"
+deps.modmenu = "9.2.0"
+
 [fabric."1.21.1"]
 deps.minecraft = "1.21.1"
 deps.fabric-api = "0.116.7+1.21.1"
@@ -78,6 +88,11 @@ deps.minecraft = "26.2"
 deps.fabric-api = "0.161.0+26.2"
 deps.modmenu = "20.0.2"
 
+[fabric."26.3"]
+deps.minecraft = "26.3"
+deps.fabric-api = "0.161.0+26.3"
+deps.modmenu = "21.0.0"
+
 [forge]
 
 [forge."1.19.2"]
@@ -85,6 +100,14 @@ deps.minecraft = "1.19.2"
 deps.forge = "43.5.2"
 
 [neoforge]
+
+[neoforge."1.20.2"]
+deps.minecraft = "1.20.2"
+deps.neoforge = "20.2.93"
+
+[neoforge."1.20.4"]
+deps.minecraft = "1.20.4"
+deps.neoforge = "20.4.251"
 
 [neoforge."1.21.1"]
 deps.minecraft = "1.21.1"
@@ -95,7 +118,19 @@ deps.minecraft = "1.21.7"
 deps.neoforge = "21.7.1-beta"
 publish.additionalVersions = ["1.21.6"]
 
+[neoforge."1.21.11"]
+deps.minecraft = "1.21.11"
+deps.neoforge = "21.11.45"
+
 [neoforge."26.1.2"]
 deps.minecraft = "26.1.2"
 deps.neoforge = "26.1.2.29-beta"
 publish.additionalVersions = ["26.1.1", "26.1"]
+
+[neoforge."26.2"]
+deps.minecraft = "26.2"
+deps.neoforge = "26.2.0.88"
+
+[neoforge."26.3"]
+deps.minecraft = "26.3"
+deps.neoforge = "26.3.0.39-beta"
